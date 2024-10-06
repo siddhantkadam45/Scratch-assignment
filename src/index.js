@@ -1,13 +1,18 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";  // Make sure this import is here
 import App from "./App";
 import "tailwindcss/tailwind.css";
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from "./Redux/Store";
 
-console.log("hi");
+const container = document.getElementById('root');
+const root = createRoot(container);
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+root.render(
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
 );
